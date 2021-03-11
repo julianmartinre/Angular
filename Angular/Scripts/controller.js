@@ -1,5 +1,6 @@
-﻿angular.module("HttpModule", [])
-.controller("HttpController", function ($scope, $http) {
+﻿var app = angular.module("AngularModule", ["LocalStorageModule"])
+
+app.controller("HttpController", function ($scope, $http) {
     $scope.nombre = "Julian";
     $scope.posts = [];
     $http({
@@ -11,4 +12,12 @@
     }, function (error) {
 
     })
+});
+
+app.controller("TodoController", function ($scope, localStorageService) {
+    $scope.todo = [];
+    $scope.AddActv = function () {
+        $scope.todo.push($scope.newActv);
+        $scope.newActv = {};
+    }
 });
